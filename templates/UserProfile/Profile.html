@@ -18,8 +18,9 @@
                             <div class="card-block text-center text-white">
                                 <div class="m-b-25"> <img src="https://img.icons8.com/bubbles/100/000000/user.png" class="img-radius" alt="User-Profile-Image"> </div>
                                 <h6 class="f-w-600">{{user.username}}</h6>
+                                <p>{{user_profile_info.bio}}</p>
                                 <div class="pt-3">
-                                    <button type="submit" class="myButton btn-primary ">Update Profile</button>
+                                    <a class="myButton btn-primary" href="{% url 'UserProfile:update_profile' username=request.user.username%}">Update Profile</a>
                                 </div>
                             </div>
                         </div>
@@ -33,25 +34,25 @@
                                     </div>
                                     <div class="col-sm-4">
                                         <p class="m-b-10 f-w-600">Phone</p>
-                                        <h6 class="text-muted f-w-400">01521368948</h6>
+                                        <h6 class="text-muted f-w-400">{{user_profile_info.phone}}</h6>
                                     </div>
                                     <div class="col-sm-4">
                                         <p class="m-b-10 f-w-600">Blood Group</p>
-                                        <h4 class="f-w-400 text-danger">A+</h4>
+                                        <h4 class="f-w-400 text-danger">{{user_profile_info.bloodGroup}}</h4>
                                     </div>
                                 </div>
                                 <div class="row pt-4">
                                     <div class="col-sm-4">
                                         <p class="m-b-10 f-w-600">Date Of Borth</p>
-                                        <h6 class="text-muted f-w-400">08-09-1999</h6>
+                                        <h6 class="text-muted f-w-400">{{user_profile_info.DateOfBirth}}</h6>
                                     </div>
                                     <div class="col-sm-4">
-                                        <p class="m-b-10 f-w-600">Phone</p>
-                                        <h6 class="text-muted f-w-400">01521368948</h6>
+                                        <p class="m-b-10 f-w-600">Gender</p>
+                                        <h6 class="text-muted f-w-400">{{user_profile_info.gender}}</h6>
                                     </div>
                                     <div class="col-sm-4">
-                                        <p class="m-b-10 f-w-600">Phone</p>
-                                        <h6 class="text-muted f-w-400">01521368948</h6>
+                                        <p class="m-b-10 f-w-600">Address</p>
+                                        <h6 class="text-muted f-w-400">{{user_profile_info.union}},{{user_profile_info.thana}},{{user_profile_info.city}}</h6>
                                     </div>
                                 </div>
                                 <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Others Informations.</h6>

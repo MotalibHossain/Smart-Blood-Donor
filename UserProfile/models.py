@@ -5,6 +5,7 @@ from django.db.models.fields import CharField, DateField
 # Create your models here.
 class UserProfile(models.Model):
     user=models.OneToOneField(User, on_delete=models.CASCADE)
+    bio=models.CharField(max_length=150)
     phone=models.CharField(max_length=20)
     DateOfBirth=DateField(max_length=50)
     profession=CharField(max_length=50)

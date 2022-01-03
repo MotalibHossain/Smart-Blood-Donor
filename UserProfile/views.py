@@ -21,7 +21,7 @@ import random
 #     print(message.sid)
 
 
-def index(request):
+def index(request):    
     title = {'title': "Home"}
     return render(request, 'index.html', title)
 
@@ -42,6 +42,12 @@ def login(request):
     return render(request, 'UserProfile/login.html')
 
 
+def logout_view(request):
+    logout(request)
+    return redirect(reverse_lazy('UserProfile:index'))
+
+
+
 def registrations(request):
     if request.method == 'POST':
         fname = request.POST.get('fname')
@@ -59,6 +65,7 @@ def registrations(request):
         thana = request.POST.get('thana')
         union = request.POST.get('union')
         postCode = request.POST.get('postCode')
+        bio=" "
 
         check_user = User.objects.filter(email=email).first()
         check_profile = UserProfile.objects.filter(phone=phone).first()
@@ -85,6 +92,7 @@ def registrations(request):
                               thana=thana,
                               union=union,
                               postCode=postCode,
+                              bio=bio,
         )
         profile.save()
 
@@ -92,6 +100,8 @@ def registrations(request):
                     "class2":"alert1 success ",
                    }
         return render(request, 'UserProfile/login.html', context)
+
+        # for authentications otp code sender
 
         # message_body = f'''Your otp code- {otp}'''
         # send_otp(accont_sid, auth_tocken, message_body, '+8801765044544', phone)
@@ -104,16 +114,47 @@ def registrations(request):
     return render(request, 'UserProfile/registration.html')
 
 
-def user_profile(request,username):
-    user_information=get_list_or_404(User, username=username)
-    context={"title":"Profile", "user_information":user_information}
-    return render(request, 'UserProfile/Profile.html', context)
-    # return render(request, 'UserProfile/test.html', context)
-
-def logout_view(request):
-    logout(request)
-    return redirect(reverse_lazy('UserProfile:index'))
-
-
 # def gootp(request):
 #     return render(request, 'UserProfile/otp.html')
+
+def user_profile(request,username):
+    user_information=get_list_or_404(User, username=username)
+    if request.user.is_authenticated:
+        current_user=request.user
+        user_id=current_user.id
+        user_profile_info=UserProfile.objects.get(user__pk=user_id)
+
+    context={"title":"Profile", "user_information":user_information,"user_profile_info":user_profile_info}
+
+    return render(request, 'UserProfile/Profile.html', context)
+
+
+def update_profile(request,username):
+    user_information=get_list_or_404(User, username=username)
+    if request.user.is_authenticated:
+        current_user=request.user
+        user_id=current_user.id
+        user_profile_info=UserProfile.objects.get(user__pk=user_id)
+        user_profile_info_id=user_profile_info.id
+
+    if request.method=="POST":
+        username=request.POST.get("username")
+        phone=request.POST.get("phone")
+        bio=request.POST.get("bio")
+        city=request.POST.get("address")
+
+        User.objects.filter(id=user_id).update(username=username)
+        UserProfile.objects.filter(pk=user_profile_info_id).update(phone=phone, bio=bio, city=city)
+        return redirect(reverse_lazy('UserProfile:index'))
+
+    context={"title":"Profile", "user_information":user_information,"user_profile_info":user_profile_info}
+    return render(request, 'UserProfile/UpdateProfile.html',context)
+
+
+def search_donor(request):
+    return redirect("https://www.rokto.co/search-donors/")
+
+
+def About_Blood(request):
+    title = {'title': "About Blood"}
+    return render(request, 'about_blood.html',title)

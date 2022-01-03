@@ -88,19 +88,20 @@
                             <a class="nav-link active" aria-current="page" href="/">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">About Blood</a>
+                            <a class="nav-link" href="{%url 'UserProfile:About_Blood'%}">About Blood</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Search Donor</a>
+                            <a class="nav-link" href="{%url 'UserProfile:search_donor'%}">Search Donor</a>
                         </li>
+                        {% if request.user.is_authenticated %}
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Community Post</a>
+                            <a class="nav-link" href="{%url 'articals:articals_index'%}">Community Post</a>
                         </li>
+                        {%endif%}
                         <li class="nav-item dropdown">
                             {% if request.user.is_authenticated %}
                             <a
                                 class="nav-link dropdown-toggle"
-                                href="#"
                                 id="navbarDropdown"
                                 role="button"
                                 data-bs-toggle="dropdown"
@@ -146,8 +147,108 @@
         </nav>
         <!----------------------------------------------------------------------------------------------
                                         Body contant
-    ----------------------------------------------------------------------------------------------->
-        {%block body%} {%endblock%}
+        ----------------------------------------------------------------------------------------------->
+        {%block body%}
+        
+        {%endblock%}
+
+
+            
+        <!------------------------------------------------------------------------------------------------------
+                                                                    section 8
+        -------------------------------------------------------------------------------------------------------->
+
+        <div class="footer">
+            <div class="container">
+                <div class="footer_first">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-12 footer_first_left">
+                            <h3>Emergency Call</h3>
+                            <p>+8801712-141415</p>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-12 footer_first_middle ">
+                            <h3>Email For Contact</h3>
+                            <p>blooddonate@gmail.com</p>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-12 footer_first_right">
+                            <h3>Contact us Social Media</h3>
+                            <div class="footer_social_icon">
+                                <div class="twitter">
+                                    <a href="">
+                                        <i class="fab fa-twitter fa-twitters"></i>
+                                    </a>
+                                </div>
+
+                                <div class="facebook">
+                                    <a href="">
+                                        <i class="fab fa-facebook-f"></i>
+                                    </a>
+                                </div>
+
+                                <div class="linkedin">
+                                    <a href="">
+                                        <i class="fab fa-linkedin-in"></i>
+                                    </a>
+                                </div>
+
+                                <div class="whatsapp">
+                                    <a href="">
+                                        <i class="fab fa-whatsapp"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- <center> -->
+                        <div class="line">
+                        </div>
+                        <!-- </center> -->
+
+                    </div>
+                </div>
+
+                <div class="footer_last">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-12 footer_last_left">
+                            <div class="footer_logo">
+                                <img src="{%static 'base/images/logo_white.png'%}" alt="Footer Logo">
+                                <p>The Blood Connection is a non-profit organization. Whole Blood can be donated every 56 days. Donors must be 16 or older to donate. The blood connection is an automated blood service that connects blood searchers with blood
+                                    donors in a moment through SMS and website.</p>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-4 col-sm-12 footer_last_middle">
+                            <h3>Quick Links</h3>
+                            <div class="quick_links_line"></div>
+                            <div class="footer_menu">
+                                <li><a href="#">Home</a></li>
+                                <li><a href="#">About Blood</a></li>
+                                <li><a href="#">Search Donor</a></li>
+                                <li><a href="#">Community Post</a></li>
+                                <li><a href="#team">Our Team</a></li>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-4 col-sm-12 footer_last_right">
+                            <h3>Photo Gallery</h3>
+                            <div class="photo_gallery_line"></div>
+                            <div class="gallery">
+                                <img src="{%static 'base/images/g1.png'%}" alt="Gallery Pic-1">
+                                <img src="{%static 'base/images/g2.png'%}" alt="Gallery Pic-3">
+                                <img src="{%static 'base/images/g3.png'%}" alt="Gallery Pic-2">
+                                <img src="{%static 'base/images/g4.png'%}" alt="Gallery Pic-4">
+                                <img src="{%static 'base/images/g5.png'%}" alt="Gallery Pic-5">
+                                <img src="{%static 'base/images/g6.png'%}" alt="Gallery Pic-6">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer_reserve_part text-center">
+                <p>@2021 Blood Connection All Right Reserved </p>
+            </div>
+        </div>
 
         <script
             src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"

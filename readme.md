@@ -1,5 +1,5 @@
 <center>
-<h1>Smart Blood Donner Project</h1>
+<h1>Smart Blood Donor</h1>
 <hr>
 </center>
 
@@ -23,7 +23,9 @@
 # Features:
 
 - [x] User Login and Registrations.
-- [ ] About Blood.
+- [x] Show User profile after login.
+- [x] About Blood.
 - [ ] Search blood donner in normally.
 - [ ] Search blood donner in Special way.
 - [ ] Find blood donner in easy way and in a short time.
+- [x] Do post request for blood in our blood community.
