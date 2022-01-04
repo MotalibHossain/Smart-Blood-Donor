@@ -26,6 +26,6 @@
 - [x] Show User profile after login.
 - [x] About Blood.
 - [ ] Search blood donner in normally.
-- [ ] Search blood donner in Special way.
+- [ ] Search blood donner using map.
 - [ ] Find blood donner in easy way and in a short time.
 - [x] Do post request for blood in our blood community.
