@@ -15,7 +15,7 @@
 
 # Objective of this project
 
-<b>i am going to offer those facilities in this projet.</b>
+<b>I am going to offer those facilities in this projet.</b>
 1. we will search blood in a specific area in smartly.
 2. Everyone can easily collect blood using this system.
 3. Everyone can easily donate their blood using this system.
