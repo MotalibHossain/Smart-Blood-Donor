@@ -65,7 +65,7 @@ def registrations(request):
         thana = request.POST.get('thana')
         union = request.POST.get('union')
         postCode = request.POST.get('postCode')
-        bio=" "
+        # bio=" "
 
         check_user = User.objects.filter(email=email).first()
         check_profile = UserProfile.objects.filter(phone=phone).first()
@@ -92,7 +92,6 @@ def registrations(request):
                               thana=thana,
                               union=union,
                               postCode=postCode,
-                              bio=bio,
         )
         profile.save()
 
@@ -144,7 +143,7 @@ def update_profile(request,username):
         city=request.POST.get("address")
 
         User.objects.filter(id=user_id).update(username=username)
-        UserProfile.objects.filter(pk=user_profile_info_id).update(phone=phone, bio=bio, city=city)
+        UserProfile.objects.filter(pk=user_profile_info_id).update(phone=phone, city=city)
         return redirect(reverse_lazy('UserProfile:index'))
 
     context={"title":"Profile", "user_information":user_information,"user_profile_info":user_profile_info}
@@ -152,6 +151,7 @@ def update_profile(request,username):
 
 
 def search_donor(request):
+    userprofile=UserProfile.objects.all()
     if request.method=="POST":
         blood_group=request.POST.get("blood")
         location=request.POST.get("location")
@@ -163,7 +163,8 @@ def search_donor(request):
 
         context={'userprofile':userprofile}
         return render(request, 'UserProfile/search.html',context)
-    return render(request, 'UserProfile/search.html')
+    context={'userprofile':userprofile}
+    return render(request, 'UserProfile/search.html',context)
 
 
 def About_Blood(request):

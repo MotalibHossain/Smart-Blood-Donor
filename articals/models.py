@@ -10,11 +10,13 @@ class BloodRequestPost(models.Model):
     bloodgroup=models.CharField(max_length=20)
     neededBlood=models.CharField(max_length=20)
     locations=models.CharField(max_length=50)
-    requestDate=models.DateField(max_length=50)
-    currentDate=models.DateField(auto_now_add=True, blank=False)
+    requestDate=models.DateTimeField(max_length=50)
+    currentDate=models.DateTimeField(auto_now_add=True, blank=False)
+    update_date=models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering=['-currentDate',]
 
     def __str__(self) -> str:
         return self.author.username
     
-    class Meta:
-        ordering=['-currentDate']

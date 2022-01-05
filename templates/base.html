@@ -108,6 +108,7 @@
                                 aria-expanded="false"
                             >
                             <img class="user_profile_image" src="{%static 'UserProfile/images/profile.png'%}" alt="">
+                            <!-- <img class="user_profile_image" src="media/{{user_profile_info.profile_pic}}" alt=""> -->
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="{%url 'UserProfile:user_profile' username=request.user.username%}">Profile</a></li>

@@ -11,8 +11,8 @@
             <div class="row updateprofile">
                 <div class="col-md-3 border-right">
                     <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                        <img class="rounded-circle mt-5" src="https://i.imgur.com/O1RmJXT.jpg" width="90">
-                        <span class="font-weight-bold">{{user_info.username}}</span>
+                        <img class="rounded-circle mt-5" src="{%static 'UserProfile/images/profile.png'%}" width="90">
+                        <span class="font-weight-bold pt-3">{{user.username}}</span>
                         <span class="text-black-50">{{user_info.email}}</span>
                         <span>{{user_info.profile.country}}</span></div>
                 </div>
@@ -34,10 +34,10 @@
                                     <label class="labels">Phone</label>
                                     <input name='phone' type="text" class="form-control" placeholder="" value="{{user_profile_info.phone}}">
                                 </div>
-                                <div class="col-md-12">
+                                <!-- <div class="col-md-12">
                                     <label class="labels">Bio</label>
                                     <input name='bio' type="text" class="form-control" placeholder="" value="{{user_profile_info.bio}}">
-                                </div>
+                                </div> -->
                                 <div class="col-md-12">
                                     <label class="labels">Location</label>
                                     <input name='address' type="text" class="form-control" placeholder="UserName" value="{{user_profile_info.city}}">

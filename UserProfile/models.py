@@ -5,7 +5,7 @@ from django.db.models.fields import CharField, DateField
 # Create your models here.
 class UserProfile(models.Model):
     user=models.OneToOneField(User, on_delete=models.CASCADE)
-    bio=models.CharField(max_length=150)
+    profile_pic=models.ImageField(upload_to="UserProfile/profile_pic/", default='default.jpg')
     phone=models.CharField(max_length=20)
     DateOfBirth=DateField(max_length=50)
     profession=CharField(max_length=50)
@@ -16,6 +16,7 @@ class UserProfile(models.Model):
     union=CharField(max_length=30)
     postCode=CharField(max_length=20)
     otp=models.CharField(max_length=30)
+    published = models.BooleanField(default=True)
 
 
     def __str__(self) -> str:

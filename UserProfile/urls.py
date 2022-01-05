@@ -1,6 +1,8 @@
 
 from django.contrib import admin
 from django.urls import path
+from django.conf.urls.static import static
+from django.conf import settings
 from UserProfile.views import(
     registrations,
     login,
@@ -21,9 +23,7 @@ urlpatterns = [
     path('logout/', logout_view, name='logout'),
     path('User/<str:username>', user_profile, name='user_profile'),
     path('update_profile/<str:username>', update_profile, name='update_profile'),
-
     path('search_donor/', search_donor, name='search_donor'),
-    
     path('About_Blood/', About_Blood, name='About_Blood'),
     # path('otp/', gootp, name='gootp'),
-]
+]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
