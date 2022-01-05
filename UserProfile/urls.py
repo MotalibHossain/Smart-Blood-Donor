@@ -21,7 +21,9 @@ urlpatterns = [
     path('logout/', logout_view, name='logout'),
     path('User/<str:username>', user_profile, name='user_profile'),
     path('update_profile/<str:username>', update_profile, name='update_profile'),
+
     path('search_donor/', search_donor, name='search_donor'),
+    
     path('About_Blood/', About_Blood, name='About_Blood'),
     # path('otp/', gootp, name='gootp'),
 ]

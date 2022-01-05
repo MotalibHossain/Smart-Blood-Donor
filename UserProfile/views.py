@@ -152,7 +152,18 @@ def update_profile(request,username):
 
 
 def search_donor(request):
-    return redirect("https://www.rokto.co/search-donors/")
+    if request.method=="POST":
+        blood_group=request.POST.get("blood")
+        location=request.POST.get("location")
+        
+        userprofile=UserProfile.objects.filter(
+            bloodGroup__contains=blood_group,
+            city__contains=location,
+        )
+
+        context={'userprofile':userprofile}
+        return render(request, 'UserProfile/search.html',context)
+    return render(request, 'UserProfile/search.html')
 
 
 def About_Blood(request):

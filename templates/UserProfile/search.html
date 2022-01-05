@@ -1,0 +1,40 @@
+{%extends 'base.html'%} 
+
+{%block head%} 
+
+{% load static %}
+<!-- Main css -->
+<!-- <link rel="stylesheet" href="{%static 'UserProfile/css/style.css'%}" /> -->
+{%endblock%} 
+
+{%block body%}
+<h1>Search blood</h1>
+<div class="container">
+    <div class="row">
+        <form action="{% url 'UserProfile:search_donor'%}" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+              <label for="Blood Group">Blood Group</label>
+              <input type="text" name="blood" class="form-control" id="email">
+            </div>
+            <div class="form-group">
+              <label for="Blood Group">Location</label>
+              <input type="text" name="location" class="form-control" id="email">
+            </div>
+            <br>
+            <div>
+                <button type="submit" class="btn btn-success">Search</button>
+            </div>
+          </form>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-lg-4 bg-info">
+            {% for user in userprofile%}
+            <p>{{user.bloodGroup}}</p>
+            <p>{{user.user.username}}</p>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
