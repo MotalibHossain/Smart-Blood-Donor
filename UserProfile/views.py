@@ -122,6 +122,8 @@ def user_profile(request,username):
         current_user=request.user
         user_id=current_user.id
         user_profile_info=UserProfile.objects.get(user__pk=user_id)
+        img=user_profile_info.profile_pic
+        print(img)
 
     context={"title":"Profile", "user_information":user_information,"user_profile_info":user_profile_info}
 

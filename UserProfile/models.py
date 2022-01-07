@@ -5,7 +5,10 @@ from django.db.models.fields import CharField, DateField
 # Create your models here.
 class UserProfile(models.Model):
     user=models.OneToOneField(User, on_delete=models.CASCADE)
-    profile_pic=models.ImageField(upload_to="UserProfile/profile_pic/", default='default.jpg')
+    profile_pic=models.ImageField(
+        upload_to="UserProfile/Profilepic/", 
+        default='UserProfile/Profilepic/default_user_profile.png'
+        )
     phone=models.CharField(max_length=20)
     DateOfBirth=DateField(max_length=50)
     profession=CharField(max_length=50)
