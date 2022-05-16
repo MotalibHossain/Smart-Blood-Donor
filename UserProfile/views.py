@@ -138,14 +138,20 @@ def update_profile(request,username):
         user_profile_info=UserProfile.objects.get(user__pk=user_id)
         user_profile_info_id=user_profile_info.id
 
-    if request.method=="POST":
+    if(request.method=="POST" and request.FILES):
         username=request.POST.get("username")
         phone=request.POST.get("phone")
         bio=request.POST.get("bio")
         city=request.POST.get("address")
+        profile_picture=request.FILES['profile_picture']
 
+        User_Profile=UserProfile(user=current_user, profile_pic=profile_picture)
+        User_Profile.save()
         User.objects.filter(id=user_id).update(username=username)
-        UserProfile.objects.filter(pk=user_profile_info_id).update(phone=phone, city=city)
+        UserProfile.objects.filter(pk=user_profile_info_id).update(
+            phone=phone,
+            city=city,
+            )
         return redirect(reverse_lazy('UserProfile:index'))
 
     context={"title":"Profile", "user_information":user_information,"user_profile_info":user_profile_info}

@@ -11,13 +11,13 @@
             <div class="row updateprofile">
                 <div class="col-md-3 border-right">
                     <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                        <img class="rounded-circle mt-5" src="{%static 'UserProfile/images/profile.png'%}" width="90">
+                        <img class="rounded-circle mt-5" src="{{user_profile_info.profile_pic.url}}" width="90">
                         <span class="font-weight-bold pt-3">{{user.username}}</span>
                         <span class="text-black-50">{{user_info.email}}</span>
                         <span>{{user_info.profile.country}}</span></div>
                 </div>
                 <div class="col-md-5 border-right">
-                   <form action="{% url 'UserProfile:update_profile' username=request.user.username%}" method="post" >
+                   <form action="{% url 'UserProfile:update_profile' username=request.user.username%}" method="post" enctype="multipart/form-data" >
                         {% csrf_token %} 
                         <!-- enctype="multipart/form-data" -->
                         <div class=" text-center">
@@ -41,6 +41,10 @@
                                 <div class="col-md-12">
                                     <label class="labels">Location</label>
                                     <input name='address' type="text" class="form-control" placeholder="UserName" value="{{user_profile_info.city}}">
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="labels">Profile Picture</label>
+                                    <input name='profile_picture' type="file" class="form-control" placeholder="UserName">
                                 </div>
                             </div>
                             <div class="mt-5 text-center">
