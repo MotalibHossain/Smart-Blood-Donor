@@ -14,6 +14,7 @@
 8. go to http://127.0.0.1:8000/
 
 # Objective of this project
+Using this project, People can easily search for blood in a specific area and easily can collect blood. Also, everyone can easily donate their blood.<br>
 
 <b>I am going to offer those facilities in this projet.</b>
 1. we will search blood in a specific area in smartly.
